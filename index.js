@@ -7,7 +7,7 @@ const retryDeps = 5;
 module.exports = function (file) {
   const filePath1 = resolve(process.cwd(), file);
   if (fs.existsSync(filePath1)) {
-    return file;
+    return filePath1;
   }
   let currentDir = process.cwd();
   for (let i = 0; i < retryDeps && !isProjectDir(currentDir); i++) {
@@ -17,5 +17,5 @@ module.exports = function (file) {
       return filePath;
     }
   }
-  return file;
+  return filePath1;
 };
